@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 
-    <!-- Legacy Storage (Android 12 و پایین‌تر) -->
+    <!-- Legacy Storage -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -38,7 +38,7 @@
         android:requestLegacyExternalStorage="false"
         tools:targetApi="s">
 
-        <!-- Splash Activity (اول) -->
+        <!-- Splash -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -51,14 +51,14 @@
             </intent-filter>
         </activity>
 
-        <!-- Onboarding Activity -->
+        <!-- Onboarding -->
         <activity
             android:name=".OnboardingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <!-- Main Activity (WebView) -->
+        <!-- Main -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -67,7 +67,6 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="adjustResize">
 
-            <!-- Deep Linking -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -78,27 +77,26 @@
                     android:pathPrefix="/app/app1" />
             </intent-filter>
 
-            <!-- App Shortcuts -->
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
 
-        <!-- Offline Activity -->
+        <!-- Offline -->
         <activity
             android:name=".OfflineActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <!-- Error Activity -->
+        <!-- Error -->
         <activity
             android:name=".ErrorActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <!-- Settings Activity -->
+        <!-- Settings -->
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
@@ -106,7 +104,7 @@
             android:parentActivityName=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <!-- About Activity -->
+        <!-- About -->
         <activity
             android:name=".AboutActivity"
             android:exported="false"
@@ -114,7 +112,12 @@
             android:parentActivityName=".SettingsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <!-- ============ Firebase Messaging Service ============ -->
+        <!--
+        ==========================================
+        Firebase Messaging Service
+        (غیرفعال چون google-services.json نیست)
+        بعداً که فایل رو گرفتی، این بخش رو از کامنت در بیار
+        ==========================================
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -123,7 +126,6 @@
             </intent-filter>
         </service>
 
-        <!-- Firebase Metadata -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification" />
@@ -133,6 +135,7 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="default" />
+        -->
 
     </application>
 
