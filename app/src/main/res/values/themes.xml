@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ============================================ -->
+    <!-- Splash Screen API (Android 12+)              -->
+    <!-- ============================================ -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="postSplashScreenTheme">@style/Theme.App.Splash</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Main Theme Overrides                         -->
+    <!-- ============================================ -->
+    <style name="Theme.App.Base" parent="Theme.App">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@anim/fade_in</item>
+        <item name="android:windowExitTransition">@anim/fade_out</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Screen Orientation Portrait                  -->
+    <!-- ============================================ -->
+    <style name="Theme.App.Portrait" parent="Theme.App">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/bg_main</item>
+    </style>
+
+</resources>
