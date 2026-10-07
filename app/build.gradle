@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.application'
-    // Firebase plugin شرطی می‌شه — اگه google-services.json نبود، خطا نمی‌ده
 }
 
-// چک کردن وجود google-services.json قبل از apply کردن plugin
+// بررسی وجود google-services.json قبل از فعال‌سازی Firebase
 def googleServicesFile = file('google-services.json')
-if (googleServicesFile.exists()) {
+def hasGoogleServices = googleServicesFile.exists()
+
+if (hasGoogleServices) {
     apply plugin: 'com.google.gms.google-services'
 }
 
@@ -88,8 +89,8 @@ dependencies {
     // Splash Screen API
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
-    // Firebase Cloud Messaging (فقط اگه google-services.json موجوده)
-    if (googleServicesFile.exists()) {
+    // Firebase Cloud Messaging — فقط اگه google-services.json موجود باشه
+    if (hasGoogleServices) {
         implementation platform('com.google.firebase:firebase-bom:32.7.0')
         implementation 'com.google.firebase:firebase-messaging'
     }
