@@ -36,7 +36,7 @@
                 android:text="@string/about_title"
                 android:textSize="@dimen/text_h3"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
+                android:textColor="#1A1A1A"
                 android:fontFamily="@font/vazirmatn"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,7 @@
             android:text="@string/app_name"
             android:textSize="@dimen/text_h2"
             android:textStyle="bold"
-            android:textColor="@color/text_primary"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
         <!-- نسخه -->
@@ -76,7 +76,7 @@
             android:layout_marginTop="@dimen/space_xs"
             android:text="@string/app_version_label"
             android:textSize="@dimen/text_small"
-            android:textColor="@color/text_tertiary"
+            android:textColor="#4A4A4A"
             android:fontFamily="@font/vazirmatn" />
 
         <!-- توضیح -->
@@ -89,7 +89,7 @@
             android:layout_marginEnd="@dimen/space_2xl"
             android:text="@string/about_description"
             android:textSize="@dimen/text_body"
-            android:textColor="@color/text_secondary"
+            android:textColor="#2D2D2D"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center"
             android:lineSpacingMultiplier="1.7" />
@@ -122,7 +122,7 @@
                 android:layout_marginStart="@dimen/space_md"
                 android:text="@string/about_website"
                 android:textSize="@dimen/text_body"
-                android:textColor="@color/text_primary"
+                android:textColor="#1A1A1A"
                 android:fontFamily="@font/vazirmatn" />
 
             <ImageView
@@ -162,7 +162,7 @@
                 android:layout_marginStart="@dimen/space_md"
                 android:text="@string/about_contact"
                 android:textSize="@dimen/text_body"
-                android:textColor="@color/text_primary"
+                android:textColor="#1A1A1A"
                 android:fontFamily="@font/vazirmatn" />
 
             <ImageView
@@ -185,7 +185,7 @@
             android:layout_marginEnd="@dimen/space_2xl"
             android:text="@string/about_copyright"
             android:textSize="@dimen/text_caption"
-            android:textColor="@color/text_tertiary"
+            android:textColor="#4A4A4A"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center" />
 
