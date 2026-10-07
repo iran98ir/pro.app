@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -19,14 +18,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String CHANNEL_ID = "default";
 
-    // ============================================
-    // دریافت پیام
-    // ============================================
     @Override
-    public void onMessageReceived(@NonNull RemoteMessage message) {
+    public void onMessageReceived(RemoteMessage message) {
         super.onMessageReceived(message);
 
-        // چک کن کاربر اعلان‌ها رو خاموش نکرده باشه
         if (!PrefsManager.isNotificationsEnabled(this)) return;
 
         String title = getString(R.string.notification_new);
@@ -34,7 +29,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String url = null;
         int badgeCount = 0;
 
-        // از Notification
         if (message.getNotification() != null) {
             if (message.getNotification().getTitle() != null) {
                 title = message.getNotification().getTitle();
@@ -44,7 +38,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             }
         }
 
-        // از Data
         if (message.getData() != null) {
             String dataTitle = message.getData().get("title");
             String dataBody = message.getData().get("body");
@@ -67,9 +60,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         updateBadge(badgeCount);
     }
 
-    // ============================================
-    // نمایش نوتیفیکیشن
-    // ============================================
     private void showNotification(String title, String body, String url) {
         createChannelIfNeeded();
 
@@ -112,15 +102,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    // ============================================
-    // ساخت Channel (Android 8+)
-    // ============================================
     private void createChannelIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager nm = getSystemService(NotificationManager.class);
             if (nm == null) return;
 
-            // اگه Channel وجود داره، دوباره نساز
             if (nm.getNotificationChannel(CHANNEL_ID) != null) return;
 
             NotificationChannel channel = new NotificationChannel(
@@ -140,9 +126,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    // ============================================
-    // Badge روی آیکون
-    // ============================================
     private void updateBadge(int count) {
         try {
             if (count > 0) {
@@ -154,14 +137,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    // ============================================
-    // توکن جدید
-    // ============================================
     @Override
-    public void onNewToken(@NonNull String token) {
+    public void onNewToken(String token) {
         super.onNewToken(token);
-
-        // ذخیره محلی
         PrefsManager.setFcmToken(this, token);
     }
 }
