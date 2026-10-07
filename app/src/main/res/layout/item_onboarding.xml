@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_lg"
         android:textSize="@dimen/text_body"
-        android:textColor="#1A1A1A"
+        android:textColor="#2D2D2D"
         android:fontFamily="@font/vazirmatn"
         android:gravity="center"
         android:lineSpacingMultiplier="1.7" />
