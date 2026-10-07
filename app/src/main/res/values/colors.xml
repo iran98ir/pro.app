@@ -12,7 +12,7 @@
     <color name="accent_dark">#B8925C</color>
 
     <!-- ============================================ -->
-    <!-- پس‌زمینه‌ها (روشن، نه سفید مطلق)            -->
+    <!-- پس‌زمینه‌ها                                  -->
     <!-- ============================================ -->
     <color name="bg_main">#FDF8F5</color>
     <color name="bg_secondary">#F7EFEA</color>
@@ -20,11 +20,11 @@
     <color name="bg_card">#FFFFFF</color>
 
     <!-- ============================================ -->
-    <!-- متن                                         -->
+    <!-- متن — تیره‌تر برای خوانایی بهتر              -->
     <!-- ============================================ -->
-    <color name="text_primary">#2D1B24</color>
-    <color name="text_secondary">#8B6B7A</color>
-    <color name="text_tertiary">#B8A0AB</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#3A2530</color>
+    <color name="text_tertiary">#5A4550</color>
     <color name="text_inverse">#FFFFFF</color>
     <color name="text_accent">#B76E79</color>
 
