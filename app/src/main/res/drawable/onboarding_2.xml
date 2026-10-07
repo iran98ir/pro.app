@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- دایره‌ی پس‌زمینه‌ی نرم -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.12"
+        android:pathData="M120,120m-95,0a95,95 0,1 1,190 0a95,95 0,1 1,-190 0" />
+
+    <!-- دایره‌ی وسط -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.18"
+        android:pathData="M120,120m-70,0a70,70 0,1 1,140 0a70,70 0,1 1,-140 0" />
+
+    <!-- شانه (نماد مو) -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M85,90 L85,80 L155,80 L155,90 L145,90 L145,160 L135,160 L135,90 L125,90 L125,160 L115,160 L115,90 L105,90 L105,160 L95,160 L95,90 Z" />
+
+    <!-- قیچی (نماد کوتاه کردن) -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M155,140 L175,160 L168,167 L148,147 Z" />
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M155,160 L175,140 L182,147 L162,167 Z" />
+
+    <!-- دایره‌ی قیچی چپ -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M150,150m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M180,150m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+
+</vector>
