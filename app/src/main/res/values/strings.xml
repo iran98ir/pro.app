@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ============================================ -->
+    <!-- App                                          -->
+    <!-- ============================================ -->
+    <string name="app_name">Mu✂️mu</string>
+    <string name="app_version_label">نسخه</string>
+
+    <!-- ============================================ -->
+    <!-- Splash                                       -->
+    <!-- ============================================ -->
+    <string name="splash_brand">Mu✂️mu</string>
+    <string name="splash_tagline">خریدار اصلی موی زنان</string>
+    <string name="splash_tagline_sub">در سراسر ایران</string>
+    <string name="splash_privacy">با حفظ کامل حریم خصوصی بانوان</string>
+
+    <!-- ============================================ -->
+    <!-- Onboarding                                   -->
+    <!-- ============================================ -->
+    <string name="onboarding_skip">پرش</string>
+    <string name="onboarding_next">بعدی</string>
+    <string name="onboarding_start">ورود به اپلیکیشن</string>
+
+    <!-- Slide 1 -->
+    <string name="onboarding_slide_1_title">بیشترین قیمت پیشنهادی</string>
+    <string name="onboarding_slide_1_desc">قیمت‌گذاری همیشه به‌روز\nبدون نیاز به آپدیت اپلیکیشن\nفروش مو، ساده و بدون محدودیت</string>
+
+    <!-- Slide 2 -->
+    <string name="onboarding_slide_2_title">خرید موی طبیعی و رنگ‌شده</string>
+    <string name="onboarding_slide_2_desc">از ۲۰ سانتی‌متر به بالا\nحضوری: تهران، مشهد و اصفهان\nغیرحضوری: سراسر ایران</string>
+
+    <!-- Slide 3 -->
+    <string name="onboarding_slide_3_title">قیمت‌گذاری دقیق و شفاف</string>
+    <string name="onboarding_slide_3_desc">محاسبه ساده و یکپارچه قیمت\nبر اساس طول و وزن دقیق مو</string>
+
+    <!-- Slide 4 -->
+    <string name="onboarding_slide_4_title">آرامش خاطر، از اولین قدم</string>
+    <string name="onboarding_slide_4_desc">مشاوره کاملاً ناشناس\nبدون ثبت شماره تماس\nرابط کاربری ساده و روان\nطراحی‌شده برای تجربه‌ای راحت و مطمئن</string>
+    <string name="onboarding_slide_4_footer">و امکانات بیشتر برای شما…</string>
+
+    <!-- ============================================ -->
+    <!-- Error — Offline                              -->
+    <!-- ============================================ -->
+    <string name="error_no_internet">اتصال اینترنت شما برقرار نیست</string>
+    <string name="error_no_internet_desc">برای استفاده از اپ، لطفاً اتصال خود را بررسی کنید</string>
+
+    <!-- Error — Server -->
+    <string name="error_load_failed">یه مشکلی پیش اومد</string>
+    <string name="error_load_failed_desc">کارشناس فنی ما در حال بررسیه</string>
+    <string name="error_404">صفحه پیدا نشد</string>
+    <string name="error_404_desc">شاید آدرس عوض شده</string>
+    <string name="error_403">دسترسی نداری</string>
+    <string name="error_403_desc">لطفاً دوباره وارد شو</string>
+    <string name="error_500">سرور یه مشکل داره</string>
+    <string name="error_500_desc">کارشناس فنی ما در حال بررسیه</string>
+    <string name="error_503">سرور در حال تعمیره</string>
+    <string name="error_503_desc">چند دقیقه دیگه دوباره تلاش کن</string>
+
+    <!-- Error — Actions -->
+    <string name="error_retry">تلاش مجدد</string>
+    <string name="error_contact_support">تماس با پشتیبانی</string>
+
+    <!-- ============================================ -->
+    <!-- Exit Dialog                                  -->
+    <!-- ============================================ -->
+    <string name="exit_title">از اپ خارج بشم؟</string>
+    <string name="exit_message">اگه خارج بشی، پیام‌های جدید رو از دست می‌دی</string>
+    <string name="exit_yes">بله، خارج شو</string>
+    <string name="exit_no">نه، بمون</string>
+    <string name="exit_double_tap">برای خروج، دوباره بزن</string>
+
+    <!-- ============================================ -->
+    <!-- Settings                                     -->
+    <!-- ============================================ -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_section_display">نمایش</string>
+    <string name="settings_section_notifications">اعلان‌ها</string>
+    <string name="settings_section_data">داده‌ها</string>
+    <string name="settings_section_about">اطلاعات</string>
+
+    <string name="settings_dark_mode">حالت تیره</string>
+    <string name="settings_dark_mode_auto">خودکار (طبق سیستم)</string>
+    <string name="settings_dark_mode_on">روشن</string>
+    <string name="settings_dark_mode_off">خاموش</string>
+
+    <string name="settings_notifications">اعلان‌ها</string>
+    <string name="settings_notifications_desc">دریافت اطلاعیه‌های جدید از Mu✂️mu</string>
+    <string name="settings_sound">صدا</string>
+
+    <string name="settings_cache">حجم کش</string>
+    <string name="settings_cache_clear">پاک کردن کش</string>
+    <string name="settings_cache_cleared">کش با موفقیت پاک شد</string>
+    <string name="settings_cache_calculating">در حال محاسبه…</string>
+
+    <string name="settings_privacy">حریم خصوصی</string>
+    <string name="settings_terms">قوانین و مقررات</string>
+    <string name="settings_share">اشتراک‌گذاری اپ</string>
+    <string name="settings_about">درباره‌ی اپ</string>
+    <string name="settings_share_text">اپلیکیشن Mu✂️mu رو از این لینک دانلود کن:</string>
+
+    <!-- ============================================ -->
+    <!-- About                                        -->
+    <!-- ============================================ -->
+    <string name="about_title">درباره</string>
+    <string name="about_description">خریدار تخصصی موی بانوان در سراسر ایران، با حفظ کامل حریم خصوصی.</string>
+    <string name="about_developer">توسعه‌دهنده</string>
+    <string name="about_developer_name">تیم Vista</string>
+    <string name="about_contact">تماس با ما</string>
+    <string name="about_website">وب‌سایت</string>
+    <string name="about_website_url">https://www.rosha-24.ir</string>
+    <string name="about_copyright">© ۱۴۰۳ Mu✂️mu — تمامی حقوق محفوظ است</string>
+
+    <!-- ============================================ -->
+    <!-- Downloads                                    -->
+    <!-- ============================================ -->
+    <string name="download_started">دانلود شروع شد</string>
+    <string name="download_failed">خطا در دانلود</string>
+    <string name="download_complete">دانلود کامل شد</string>
+
+    <!-- ============================================ -->
+    <!-- Shortcuts                                    -->
+    <!-- ============================================ -->
+    <string name="shortcut_home">صفحه اصلی</string>
+    <string name="shortcut_profile">پروفایل من</string>
+
+    <!-- ============================================ -->
+    <!-- Notifications                                -->
+    <!-- ============================================ -->
+    <string name="notification_channel_default">اطلاعیه‌ها</string>
+    <string name="notification_channel_default_desc">اطلاعیه‌های جدید از Mu✂️mu</string>
+    <string name="notification_new">اطلاعیه جدید</string>
+
+    <!-- ============================================ -->
+    <!-- Common                                       -->
+    <!-- ============================================ -->
+    <string name="ok">باشه</string>
+    <string name="cancel">لغو</string>
+    <string name="confirm">تأیید</string>
+    <string name="close">بستن</string>
+    <string name="back">بازگشت</string>
+    <string name="loading">در حال بارگذاری…</string>
+    <string name="please_wait">لطفاً صبر کن…</string>
+
+</resources>
