@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- دایره‌ی پس‌زمینه‌ی نرم -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.12"
+        android:pathData="M120,120m-95,0a95,95 0,1 1,190 0a95,95 0,1 1,-190 0" />
+
+    <!-- دایره‌ی وسط -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.18"
+        android:pathData="M120,120m-70,0a70,70 0,1 1,140 0a70,70 0,1 1,-140 0" />
+
+    <!-- سپر (نماد امنیت و حریم خصوصی) -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M120,68 L85,82 L85,120 C85,148 100,168 120,178 C140,168 155,148 155,120 L155,82 Z" />
+
+    <!-- قلب داخل سپر (نماد آرامش) -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M120,142 C120,142 100,128 100,116 C100,109 105,104 112,104 C116,104 119,106 120,109 C121,106 124,104 128,104 C135,104 140,109 140,116 C140,128 120,142 120,142 Z" />
+
+    <!-- خط تیک (نماد اعتماد) -->
+    <path
+        android:fillColor="@color/bg_main"
+        android:pathData="M110,120 L117,127 L132,108 L136,111 L117,134 L107,123 Z" />
+
+    <!-- ستاره‌های تزئینی -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M78,78m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M162,78m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+
+</vector>
