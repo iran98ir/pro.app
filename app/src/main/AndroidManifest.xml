@@ -35,7 +35,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:hardwareAccelerated="true"
         android:largeHeap="true"
-        android:requestLegacyExternalStorage="false">
+        android:requestLegacyExternalStorage="false"
+        tools:targetApi="s">
 
         <!-- Splash Activity (اول) -->
         <activity
