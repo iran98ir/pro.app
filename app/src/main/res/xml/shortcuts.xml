@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ============================================ -->
+    <!-- Shortcut 1: صفحه اصلی                        -->
+    <!-- ============================================ -->
+    <shortcut
+        android:shortcutId="home"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_home"
+        android:shortcutShortLabel="@string/shortcut_home"
+        android:shortcutLongLabel="@string/shortcut_home">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="app.vista.one"
+            android:targetClass="app.vista.one.MainActivity"
+            android:data="https://www.rosha-24.ir/app/app1/" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <!-- ============================================ -->
+    <!-- Shortcut 2: پروفایل من                       -->
+    <!-- ============================================ -->
+    <shortcut
+        android:shortcutId="profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_profile"
+        android:shortcutShortLabel="@string/shortcut_profile"
+        android:shortcutLongLabel="@string/shortcut_profile">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="app.vista.one"
+            android:targetClass="app.vista.one.MainActivity"
+            android:data="https://www.rosha-24.ir/app/app1/profile" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>
