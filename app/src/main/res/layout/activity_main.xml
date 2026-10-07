@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_main">
 
-    <!-- WebView اینجا اضافه می‌شه (از کد) -->
+    <!-- WebView اینجا اضافه می‌شه -->
 
     <!-- Progress Bar (بالای صفحه) -->
     <ProgressBar
