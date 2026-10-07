@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:paddingStart="@dimen/space_sm"
+            android:paddingEnd="@dimen/space_lg">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="@dimen/space_md"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_title"
+                android:textSize="@dimen/text_h3"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/vazirmatn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnBack" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- لوگو -->
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_xl"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/app_name" />
+
+        <!-- نام اپ -->
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_lg"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_h2"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/vazirmatn" />
+
+        <!-- نسخه -->
+        <TextView
+            android:id="@+id/appVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_xs"
+            android:text="@string/app_version_label"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/text_tertiary"
+            android:fontFamily="@font/vazirmatn" />
+
+        <!-- توضیح -->
+        <TextView
+            android:id="@+id/appDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:layout_marginStart="@dimen/space_2xl"
+            android:layout_marginEnd="@dimen/space_2xl"
+            android:text="@string/about_description"
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.7" />
+
+        <!-- کارت وب‌سایت -->
+        <LinearLayout
+            android:id="@+id/itemWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2xl"
+            android:layout_marginStart="@dimen/space_lg"
+            android:layout_marginEnd="@dimen/space_lg"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:minHeight="60dp"
+            android:paddingStart="@dimen/space_lg"
+            android:paddingEnd="@dimen/space_lg">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_language"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/space_md"
+                android:text="@string/about_website"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/vazirmatn" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chevron_left"
+                android:contentDescription="@null"
+                android:alpha="0.5" />
+
+        </LinearLayout>
+
+        <!-- کارت تماس -->
+        <LinearLayout
+            android:id="@+id/itemContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:layout_marginStart="@dimen/space_lg"
+            android:layout_marginEnd="@dimen/space_lg"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:minHeight="60dp"
+            android:paddingStart="@dimen/space_lg"
+            android:paddingEnd="@dimen/space_lg">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_share"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/space_md"
+                android:text="@string/about_contact"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/vazirmatn" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chevron_left"
+                android:contentDescription="@null"
+                android:alpha="0.5" />
+
+        </LinearLayout>
+
+        <!-- Copyright -->
+        <TextView
+            android:id="@+id/textCopyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_3xl"
+            android:layout_marginBottom="@dimen/space_2xl"
+            android:layout_marginStart="@dimen/space_2xl"
+            android:layout_marginEnd="@dimen/space_2xl"
+            android:text="@string/about_copyright"
+            android:textSize="@dimen/text_caption"
+            android:textColor="@color/text_tertiary"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>
