@@ -9,13 +9,13 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import androidx.annotation.NonNull;
-
 import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
 
 public class CustomWebViewClient extends WebViewClient {
 
     private static final String BASE_DOMAIN = "rosha-24.ir";
+    private static final String BASE_URL = "https://www.rosha-24.ir/app/app1/";
 
     private final WeakReference<Context> contextRef;
 
@@ -28,30 +28,54 @@ public class CustomWebViewClient extends WebViewClient {
     // ============================================
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        return handleUrl(request.getUrl().toString());
+        return handleUrl(view, request.getUrl().toString());
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        return handleUrl(url);
+        return handleUrl(view, url);
     }
 
-    private boolean handleUrl(String url) {
-        Context context = contextRef.get();
-        if (context == null || url == null || url.isEmpty()) return false;
+    private boolean handleUrl(WebView view, String url) {
+        if (url == null || url.isEmpty()) return true;
 
-        // ۱. intent:// → استخراج URL اصلی و باز کردن
+        // ============================================
+        // ۱. intent:// → استخراج URL و لود داخل WebView
+        // ============================================
         if (url.startsWith("intent:")) {
-            return handleIntentUrl(context, url);
+            String extractedUrl = extractUrlFromIntent(url);
+            if (extractedUrl != null && !extractedUrl.isEmpty()) {
+                view.loadUrl(extractedUrl);
+            }
+            return true;
         }
 
-        // ۲. دامنه‌ی داخلی → داخل WebView
+        // ============================================
+        // ۲. پروتکل‌های ناشناخته → جلوگیری از نمایش خطا
+        // ============================================
+        if (url.startsWith("chrome:")
+            || url.startsWith("about:")
+            || url.startsWith("chrome-native:")
+            || url.startsWith("file://")
+            || url.startsWith("data:")
+            || url.startsWith("blob:")) {
+            return true;
+        }
+
+        // ============================================
+        // ۳. دامنه‌ی داخلی → داخل WebView
+        // ============================================
         if (url.contains(BASE_DOMAIN)) {
             return false;
         }
 
-        // ۳. لینک‌های خاص
+        Context context = contextRef.get();
+        if (context == null) return true;
+
+        // ============================================
+        // ۴. لینک‌های خاص (tel, mailto, ...)
+        // ============================================
         try {
             if (url.startsWith("tel:")
                 || url.startsWith("mailto:")
@@ -67,7 +91,9 @@ public class CustomWebViewClient extends WebViewClient {
                 return true;
             }
 
-            // ۴. لینک خارجی
+            // ============================================
+            // ۵. لینک خارجی → مرورگر
+            // ============================================
             if (url.startsWith("http://") || url.startsWith("https://")) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -75,67 +101,54 @@ public class CustomWebViewClient extends WebViewClient {
                 return true;
             }
 
-        } catch (Exception e) {
-            return false;
+        } catch (Exception ignored) {
         }
 
-        return false;
+        // هر چیز ناشناخته → جلوش رو بگیر
+        return true;
     }
 
-    /**
-     * مدیریت intent:// URL ها
-     * از فرمت intent://path#Intent;scheme=https;package=...;end
-     * URL اصلی رو استخراج می‌کنه و داخل WebView باز می‌کنه
-     */
-    private boolean handleIntentUrl(Context context, String url) {
+    // ============================================
+    // استخراج URL از intent://
+    // ============================================
+    private String extractUrlFromIntent(String intentUrl) {
         try {
-            // استخراج بخش اول (بعد از intent://)
-            String workUrl = url.replaceFirst("^intent://", "");
+            String workUrl = intentUrl.substring("intent:".length());
 
-            // پیدا کردن #Intent
-            int intentIndex = workUrl.indexOf("#Intent;");
-            String urlPart = intentIndex > 0
-                ? workUrl.substring(0, intentIndex)
-                : workUrl;
-
-            // استخراج scheme
-            String scheme = "https";
-            if (url.contains("scheme=")) {
-                int schemeStart = url.indexOf("scheme=") + "scheme=".length();
-                int schemeEnd = url.indexOf(";", schemeStart);
-                if (schemeEnd > schemeStart) {
-                    scheme = url.substring(schemeStart, schemeEnd);
-                }
-            }
-
-            // ساخت URL کامل
-            String finalUrl;
-            if (urlPart.startsWith("http://") || urlPart.startsWith("https://")) {
-                finalUrl = urlPart;
-            } else if (urlPart.startsWith("www.") || urlPart.contains(".")) {
-                finalUrl = scheme + "://" + urlPart;
+            String urlPart;
+            int hashIndex = workUrl.indexOf("#Intent;");
+            if (hashIndex > 0) {
+                urlPart = workUrl.substring(0, hashIndex);
             } else {
-                finalUrl = scheme + "://" + urlPart;
+                urlPart = workUrl;
             }
 
-            // اگه دامنه‌ی داخلیه، داخل WebView باز کن
-            if (finalUrl.contains(BASE_DOMAIN)) {
-                return false; // WebView خودش باز می‌کنه
+            try {
+                urlPart = URLDecoder.decode(urlPart, "UTF-8");
+            } catch (Exception ignored) {
             }
 
-            // وگرنه با مرورگر باز کن
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-            return true;
+            if (urlPart.startsWith("http://") || urlPart.startsWith("https://")) {
+                return urlPart;
+            }
+
+            if (urlPart.startsWith("www.") || urlPart.contains(".")) {
+                return "https://" + urlPart;
+            }
+
+            if (urlPart.startsWith("/")) {
+                return BASE_URL.substring(0, BASE_URL.length() - 1) + urlPart;
+            }
+
+            return urlPart;
 
         } catch (Exception e) {
-            return false;
+            return null;
         }
     }
 
     // ============================================
-    // مدیریت خطاها
+    // مدیریت خطا — جلوگیری از نمایش خطای خام
     // ============================================
     @Override
     public void onReceivedError(WebView view,
@@ -143,17 +156,39 @@ public class CustomWebViewClient extends WebViewClient {
                                  WebResourceError error) {
         super.onReceivedError(view, request, error);
 
-        if (request.isForMainFrame()) {
-            Context context = contextRef.get();
-            if (context instanceof MainActivity) {
-                MainActivity activity = (MainActivity) context;
-                if (!NetworkUtils.isNetworkAvailable(activity)) {
-                    activity.goToOffline();
-                } else {
-                    activity.goToError(0);
-                }
-            }
+        // فقط خطای main frame مهمه
+        if (!request.isForMainFrame()) return;
+
+        Context context = contextRef.get();
+        if (!(context instanceof MainActivity)) return;
+
+        MainActivity activity = (MainActivity) context;
+        int errorCode = error != null ? error.getErrorCode() : 0;
+
+        // اگه نت قطع باشه → آفلاین
+        if (!NetworkUtils.isNetworkAvailable(activity)) {
+            activity.goToOffline();
+            return;
         }
+
+        // خطای unknown scheme → نادیده بگیر (سایت مشکل داره)
+        if (errorCode == WebViewClient.ERROR_UNSUPPORTED_SCHEME
+            || errorCode == WebViewClient.ERROR_UNKNOWN) {
+            // تلاش کن به صفحه اصلی برگردی
+            activity.goToError(0);
+            return;
+        }
+
+        // خطای شبکه
+        if (errorCode == WebViewClient.ERROR_HOST_LOOKUP
+            || errorCode == WebViewClient.ERROR_CONNECT
+            || errorCode == WebViewClient.ERROR_TIMEOUT) {
+            activity.goToError(0);
+            return;
+        }
+
+        // هر خطای دیگه
+        activity.goToError(0);
     }
 
     @Override
@@ -176,11 +211,11 @@ public class CustomWebViewClient extends WebViewClient {
     @Override
     public void onReceivedSslError(WebView view,
                                     android.webkit.SslErrorHandler handler,
-                                    @NonNull android.net.http.SslError error) {
+                                    android.net.http.SslError error) {
         handler.cancel();
         Context context = contextRef.get();
         if (context instanceof MainActivity) {
             ((MainActivity) context).goToError(0);
         }
     }
-                }
+}
