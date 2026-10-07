@@ -1,6 +1,12 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
+    // Firebase plugin شرطی می‌شه — اگه google-services.json نبود، خطا نمی‌ده
+}
+
+// چک کردن وجود google-services.json قبل از apply کردن plugin
+def googleServicesFile = file('google-services.json')
+if (googleServicesFile.exists()) {
+    apply plugin: 'com.google.gms.google-services'
 }
 
 android {
@@ -82,9 +88,11 @@ dependencies {
     // Splash Screen API
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
-    // Firebase Cloud Messaging
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
-    implementation 'com.google.firebase:firebase-messaging'
+    // Firebase Cloud Messaging (فقط اگه google-services.json موجوده)
+    if (googleServicesFile.exists()) {
+        implementation platform('com.google.firebase:firebase-bom:32.7.0')
+        implementation 'com.google.firebase:firebase-messaging'
+    }
 
     // Badge روی آیکون
     implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
