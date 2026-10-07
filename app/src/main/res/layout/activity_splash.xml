@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <LinearLayout
+        android:id="@+id/splashContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="@dimen/space_xl"
+        android:paddingEnd="@dimen/space_xl">
+
+        <!-- لوگو -->
+        <ImageView
+            android:id="@+id/splashLogo"
+            android:layout_width="@dimen/splash_logo_size"
+            android:layout_height="@dimen/splash_logo_size"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter" />
+
+        <!-- نام برند -->
+        <TextView
+            android:id="@+id/splashBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:text="@string/splash_brand"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_inverse"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center" />
+
+        <!-- خط جداکننده -->
+        <View
+            android:id="@+id/splashDivider"
+            android:layout_width="@dimen/divider_short_width"
+            android:layout_height="@dimen/divider_short_height"
+            android:layout_marginTop="@dimen/space_md"
+            android:background="@color/accent" />
+
+        <!-- شعار اصلی -->
+        <TextView
+            android:id="@+id/splashTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="@string/splash_tagline"
+            android:textSize="16sp"
+            android:textColor="@color/text_inverse"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center"
+            android:alpha="0.9" />
+
+        <!-- شعار فرعی -->
+        <TextView
+            android:id="@+id/splashTaglineSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:text="@string/splash_tagline_sub"
+            android:textSize="14sp"
+            android:textColor="@color/accent"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center" />
+
+        <!-- متن حریم خصوصی -->
+        <TextView
+            android:id="@+id/splashPrivacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2xl"
+            android:text="@string/splash_privacy"
+            android:textSize="12sp"
+            android:textColor="@color/text_inverse"
+            android:fontFamily="@font/vazirmatn"
+            android:gravity="center"
+            android:alpha="0.6" />
+
+    </LinearLayout>
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/splashProgress"
+        android:layout_width="@dimen/splash_progress_size"
+        android:layout_height="@dimen/splash_progress_size"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/space_3xl"
+        android:indeterminateTint="@color/accent" />
+
+</FrameLayout>
