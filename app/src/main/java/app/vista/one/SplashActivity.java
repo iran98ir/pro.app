@@ -41,9 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        // نصب Splash Screen API
         SplashScreen.installSplashScreen(this);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
@@ -55,10 +53,8 @@ public class SplashActivity extends AppCompatActivity {
         hideAllViews();
         playEntranceAnimation();
 
-        // شروع Preload پس‌زمینه
         startBackgroundPreload();
 
-        // تایمر حداکثر انتظار
         handler.postDelayed(() -> navigate(false), MAX_WAIT_TIME);
     }
 
@@ -106,7 +102,6 @@ public class SplashActivity extends AppCompatActivity {
     // انیمیشن ورود
     // ============================================
     private void playEntranceAnimation() {
-        // لوگو
         ObjectAnimator logoAlpha = ObjectAnimator.ofFloat(splashLogo, View.ALPHA, 0f, 1f);
         logoAlpha.setDuration(700);
 
@@ -116,7 +111,6 @@ public class SplashActivity extends AppCompatActivity {
         ObjectAnimator logoScaleY = ObjectAnimator.ofFloat(splashLogo, View.SCALE_Y, 0.85f, 1f);
         logoScaleY.setDuration(700);
 
-        // نام برند
         ObjectAnimator brandAlpha = ObjectAnimator.ofFloat(splashBrand, View.ALPHA, 0f, 1f);
         brandAlpha.setDuration(600);
         brandAlpha.setStartDelay(250);
@@ -125,7 +119,6 @@ public class SplashActivity extends AppCompatActivity {
         brandTrans.setDuration(600);
         brandTrans.setStartDelay(250);
 
-        // خط جداکننده
         ObjectAnimator dividerScaleX = ObjectAnimator.ofFloat(splashDivider, View.SCALE_X, 0f, 1f);
         dividerScaleX.setDuration(500);
         dividerScaleX.setStartDelay(400);
@@ -134,7 +127,6 @@ public class SplashActivity extends AppCompatActivity {
         dividerAlpha.setDuration(500);
         dividerAlpha.setStartDelay(400);
 
-        // شعار اصلی
         ObjectAnimator taglineAlpha = ObjectAnimator.ofFloat(splashTagline, View.ALPHA, 0f, 1f);
         taglineAlpha.setDuration(600);
         taglineAlpha.setStartDelay(550);
@@ -143,17 +135,14 @@ public class SplashActivity extends AppCompatActivity {
         taglineTrans.setDuration(600);
         taglineTrans.setStartDelay(550);
 
-        // شعار فرعی
         ObjectAnimator taglineSubAlpha = ObjectAnimator.ofFloat(splashTaglineSub, View.ALPHA, 0f, 1f);
         taglineSubAlpha.setDuration(600);
         taglineSubAlpha.setStartDelay(700);
 
-        // متن حریم خصوصی
         ObjectAnimator privacyAlpha = ObjectAnimator.ofFloat(splashPrivacy, View.ALPHA, 0f, 1f);
         privacyAlpha.setDuration(600);
         privacyAlpha.setStartDelay(900);
 
-        // ProgressBar
         ObjectAnimator progressAlpha = ObjectAnimator.ofFloat(splashProgress, View.ALPHA, 0f, 1f);
         progressAlpha.setDuration(500);
         progressAlpha.setStartDelay(700);
@@ -193,9 +182,7 @@ public class SplashActivity extends AppCompatActivity {
     // ناوبری
     // ============================================
     private void navigate(boolean pageLoaded) {
-        if (!hasNavigated.compareAndSet(false, true)) {
-            return;
-        }
+        if (!hasNavigated.compareAndSet(false, true)) return;
 
         handler.removeCallbacksAndMessages(null);
 
@@ -215,14 +202,10 @@ public class SplashActivity extends AppCompatActivity {
             .setDuration(300)
             .withEndAction(() -> {
 
-                Intent intent;
-                if (PrefsManager.isOnboardingSeen(SplashActivity.this)) {
-                    intent = new Intent(SplashActivity.this, MainActivity.class);
-                } else {
-                    intent = new Intent(SplashActivity.this, OnboardingActivity.class);
-                }
-
+                // ✅ همیشه اول به FilterNoticeActivity می‌ریم
+                Intent intent = new Intent(SplashActivity.this, FilterNoticeActivity.class);
                 intent.putExtra("page_preloaded", pageLoaded);
+
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
@@ -231,12 +214,9 @@ public class SplashActivity extends AppCompatActivity {
             .start();
     }
 
-    // ============================================
-    // Back Press
-    // ============================================
     @Override
     public void onBackPressed() {
-        // توی Splash، هیچ کاری نکن
+        // هیچ کاری نکن
     }
 
     @Override
@@ -244,4 +224,4 @@ public class SplashActivity extends AppCompatActivity {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
     }
-}
+    }
