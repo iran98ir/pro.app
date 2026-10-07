@@ -30,7 +30,7 @@
         android:text="@string/filter_notice_title"
         android:textSize="@dimen/text_h2"
         android:textStyle="bold"
-        android:textColor="#2D1B24"
+        android:textColor="#1A1A1A"
         android:fontFamily="@font/vazirmatn"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/shieldIcon"
@@ -45,7 +45,7 @@
         android:layout_marginTop="@dimen/space_lg"
         android:text="@string/filter_notice_description"
         android:textSize="@dimen/text_body"
-        android:textColor="#4A3540"
+        android:textColor="#1A1A1A"
         android:fontFamily="@font/vazirmatn"
         android:gravity="center"
         android:lineSpacingMultiplier="1.7"
@@ -77,7 +77,7 @@
             android:layout_marginStart="@dimen/space_sm"
             android:text="@string/filter_notice_brand"
             android:textSize="@dimen/text_small"
-            android:textColor="@color/text_tertiary"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center" />
 
