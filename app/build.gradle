@@ -93,10 +93,8 @@ dependencies {
     if (hasGoogleServices) {
         implementation platform('com.google.firebase:firebase-bom:32.7.0')
         implementation 'com.google.firebase:firebase-messaging'
+        implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
     }
-
-    // Badge روی آیکون
-    implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
 
     // Unit Test
     testImplementation 'junit:junit:4.13.2'
