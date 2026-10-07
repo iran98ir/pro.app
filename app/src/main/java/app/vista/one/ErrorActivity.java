@@ -30,15 +30,7 @@ public class ErrorActivity extends AppCompatActivity {
         int statusCode = getIntent().getIntExtra("status_code", 0);
         applyErrorMessage(statusCode);
 
-        btnRetry.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("page_preloaded", false);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
-        });
-
+        btnRetry.setOnClickListener(v -> retryLoad());
         btnSupport.setOnClickListener(v -> openSupport());
     }
 
@@ -49,9 +41,6 @@ public class ErrorActivity extends AppCompatActivity {
         btnSupport = findViewById(R.id.btnSupport);
     }
 
-    // ============================================
-    // Safe Area
-    // ============================================
     private void setupSafeArea() {
         View root = findViewById(android.R.id.content);
         ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
@@ -63,7 +52,7 @@ public class ErrorActivity extends AppCompatActivity {
     }
 
     // ============================================
-    // نمایش پیام مناسب بر اساس کد خطا
+    // پیام بر اساس کد خطا
     // ============================================
     private void applyErrorMessage(int statusCode) {
         int titleRes;
@@ -74,22 +63,18 @@ public class ErrorActivity extends AppCompatActivity {
                 titleRes = R.string.error_404;
                 descRes = R.string.error_404_desc;
                 break;
-
             case 403:
                 titleRes = R.string.error_403;
                 descRes = R.string.error_403_desc;
                 break;
-
             case 500:
                 titleRes = R.string.error_500;
                 descRes = R.string.error_500_desc;
                 break;
-
             case 503:
                 titleRes = R.string.error_503;
                 descRes = R.string.error_503_desc;
                 break;
-
             default:
                 titleRes = R.string.error_load_failed;
                 descRes = R.string.error_load_failed_desc;
@@ -98,6 +83,19 @@ public class ErrorActivity extends AppCompatActivity {
 
         errorTitle.setText(titleRes);
         errorDescription.setText(descRes);
+    }
+
+    // ============================================
+    // تلاش مجدد — بدون ریست کامل، فقط MainActivity رو باز کن
+    // ============================================
+    private void retryLoad() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        // page_preloaded=false یعنی WebView جدید ساخته می‌شه
+        // ولی Cache داخلی WebView حفظ می‌شه (چون LOAD_DEFAULT)
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        finish();
     }
 
     // ============================================
@@ -115,15 +113,8 @@ public class ErrorActivity extends AppCompatActivity {
         }
     }
 
-    // ============================================
-    // Back → برگرد به Main
-    // ============================================
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        finish();
+        retryLoad();
     }
 }
