@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- دایره‌ی پس‌زمینه‌ی نرم -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.12"
+        android:pathData="M120,120m-95,0a95,95 0,1 1,190 0a95,95 0,1 1,-190 0" />
+
+    <!-- دایره‌ی وسط -->
+    <path
+        android:fillColor="@color/primary"
+        android:fillAlpha="0.18"
+        android:pathData="M120,120m-70,0a70,70 0,1 1,140 0a70,70 0,1 1,-140 0" />
+
+    <!-- ترازو — ستون وسط -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M117,75 L123,75 L123,160 L117,160 Z" />
+
+    <!-- ترازو — پایه -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M95,165 L145,165 L145,158 L95,158 Z" />
+
+    <!-- ترازو — بازوی افقی -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M75,85 L165,85 L165,91 L75,91 Z" />
+
+    <!-- کفه‌ی چپ -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M65,95 L95,95 L85,120 L75,120 Z" />
+    <path
+        android:fillColor="@color/accent"
+        android:fillAlpha="0.6"
+        android:pathData="M80,120m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" />
+
+    <!-- کفه‌ی راست -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M145,95 L175,95 L165,120 L155,120 Z" />
+    <path
+        android:fillColor="@color/accent"
+        android:fillAlpha="0.6"
+        android:pathData="M160,120m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" />
+
+    <!-- دایره‌ی بالای ترازو (تزئینی) -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M120,72m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" />
+
+</vector>
