@@ -45,13 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         boolean pagePreloaded = getIntent().getBooleanExtra("page_preloaded", false);
 
-        // اگه نت نداریم → صفحه‌ی آفلاین
         if (!NetworkUtils.isNetworkAvailable(this)) {
             goToOffline();
             return;
         }
 
-        // اگه Preload آماده بود، ازش استفاده کن
         if (pagePreloaded) {
             WebView cached = PreloadManager.takeWebView();
             if (cached != null) {
@@ -68,17 +66,11 @@ public class MainActivity extends AppCompatActivity {
         handleDeepLink(getIntent());
     }
 
-    // ============================================
-    // اتصال ویوها
-    // ============================================
     private void bindViews() {
         rootLayout = findViewById(R.id.rootLayout);
         progressBar = findViewById(R.id.progressBar);
     }
 
-    // ============================================
-    // Safe Area
-    // ============================================
     private void setupSafeArea() {
         View root = findViewById(android.R.id.content);
         ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
@@ -89,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ============================================
-    // WebView — ساخت و لود
-    // ============================================
     @SuppressLint("SetJavaScriptEnabled")
     private void createAndLoadWebView() {
         webView = new WebView(this);
@@ -119,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
             rootLayout.addView(cached, 0);
             webView = cached;
 
-            // مطمئن شو WebViewClient و DownloadListener ست شده
             webView.setWebViewClient(new CustomWebViewClient(this));
             webView.setDownloadListener(new CustomDownloadListener(this));
             setupWebChromeClient(webView);
@@ -132,47 +120,36 @@ public class MainActivity extends AppCompatActivity {
     private void setupWebView(WebView wv) {
         WebSettings settings = wv.getSettings();
 
-        // پایه
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
-
-        // ✅ استراتژی Cache حرفه‌ای
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        // Zoom غیرفعال
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
 
-        // Responsive
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setTextZoom(100);
 
-        // Media
         settings.setMediaPlaybackRequiresUserGesture(false);
 
-        // امنیت
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         settings.setSaveFormData(false);
 
-        // User Agent
         settings.setUserAgentString(
             settings.getUserAgentString() + " MuMuApp/1.0"
         );
 
-        // پس‌زمینه
         wv.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_main));
 
-        // Cookies
         CookieManager cm = CookieManager.getInstance();
         cm.setAcceptCookie(true);
         cm.setAcceptThirdPartyCookies(wv, false);
 
-        // Clients
         wv.setWebViewClient(new CustomWebViewClient(this));
         wv.setDownloadListener(new CustomDownloadListener(this));
         setupWebChromeClient(wv);
@@ -190,9 +167,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ============================================
-    // Back Press هوشمند
-    // ============================================
     private void setupBackPress() {
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -219,9 +193,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ============================================
-    // دیالوگ خروج
-    // ============================================
     private void showExitDialog() {
         new AlertDialog.Builder(this, R.style.Dialog_Custom)
             .setTitle(R.string.exit_title)
@@ -231,9 +202,6 @@ public class MainActivity extends AppCompatActivity {
             .show();
     }
 
-    // ============================================
-    // Network Monitor
-    // ============================================
     private void setupNetworkMonitor() {
         networkCallback = NetworkUtils.registerNetworkCallback(
             this,
@@ -241,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onNetworkAvailable() {
                     runOnUiThread(() -> {
+                        // اگه بعد از خطا نت برگشت → صفحه رو دوباره لود کن
                         if (webView != null && errorShown) {
                             errorShown = false;
                             webView.reload();
@@ -250,17 +219,12 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onNetworkLost() {
-                    runOnUiThread(() -> {
-                        // اگه از قبل خطا نشون داده، دوباره نرو
-                    });
+                    // نادیده بگیر
                 }
             }
         );
     }
 
-    // ============================================
-    // Deep Link
-    // ============================================
     private void handleDeepLink(Intent intent) {
         if (intent == null || intent.getData() == null) return;
         Uri data = intent.getData();
@@ -277,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ============================================
-    // ناوبری به صفحه‌ی خطا (از WebViewClient)
+    // ناوبری عمومی (از WebViewClient)
     // ============================================
     public void goToOffline() {
         Intent intent = new Intent(this, OfflineActivity.class);
@@ -300,7 +264,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        // ✅ ریست errorShown وقتی از ErrorActivity برمی‌گردیم
         errorShown = false;
+
         if (webView != null) {
             webView.onResume();
             webView.resumeTimers();
@@ -318,13 +284,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        // لغو Network Callback
         if (networkCallback != null) {
             NetworkUtils.unregisterNetworkCallback(this, networkCallback);
             networkCallback = null;
         }
 
-        // آزادسازی WebView
         if (webView != null) {
             try {
                 ViewGroup parent = (ViewGroup) webView.getParent();
@@ -340,4 +304,4 @@ public class MainActivity extends AppCompatActivity {
 
         super.onDestroy();
     }
-                }
+}
