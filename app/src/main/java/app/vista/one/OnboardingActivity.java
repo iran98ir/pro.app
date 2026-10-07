@@ -39,9 +39,6 @@ public class OnboardingActivity extends AppCompatActivity {
         setupListeners();
     }
 
-    // ============================================
-    // اتصال ویوها
-    // ============================================
     private void bindViews() {
         viewPager = findViewById(R.id.viewPager);
         progressDots = findViewById(R.id.progressDots);
@@ -49,9 +46,6 @@ public class OnboardingActivity extends AppCompatActivity {
         btnSkip = findViewById(R.id.btnSkip);
     }
 
-    // ============================================
-    // Safe Area
-    // ============================================
     private void setupSafeArea() {
         View root = findViewById(android.R.id.content);
         ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
@@ -62,22 +56,16 @@ public class OnboardingActivity extends AppCompatActivity {
         });
     }
 
-    // ============================================
-    // ViewPager + Dots
-    // ============================================
     private void setupViewPager() {
         adapter = new OnboardingAdapter(this);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(1);
 
-        // کاهش حساسیت swipe
         viewPager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        // ساخت نقطه‌ها
         buildDots(adapter.getItemCount());
         updateDots(0);
 
-        // شنونده تغییر صفحه
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -151,9 +139,6 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    // ============================================
-    // Listeners
-    // ============================================
     private void setupListeners() {
         btnNext.setOnClickListener(v -> {
             int current = viewPager.getCurrentItem();
@@ -167,9 +152,6 @@ public class OnboardingActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(v -> finishOnboarding());
     }
 
-    // ============================================
-    // پایان Onboarding
-    // ============================================
     private void finishOnboarding() {
         PrefsManager.setOnboardingSeen(this, true);
 
@@ -180,11 +162,9 @@ public class OnboardingActivity extends AppCompatActivity {
         finish();
     }
 
-    // ============================================
-    // Back Press → مثل Skip
-    // ============================================
     @Override
     public void onBackPressed() {
+        // کاربر نمی‌تونه برگرده — می‌ره به FilterNotice
         finishOnboarding();
     }
 }
