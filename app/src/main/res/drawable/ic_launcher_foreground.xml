@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- دایره‌ی پس‌زمینه‌ی نرم -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M54,28m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+
+    <!-- حرف M (نماد برند) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,66 L42,42 L48,42 L54,54 L60,42 L66,42 L66,66 L61,66 L61,50 L56,61 L52,61 L47,50 L47,66 Z" />
+
+</vector>
