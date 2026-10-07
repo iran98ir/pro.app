@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ============================================ -->
+    <!-- برند — رزگلد لوکس (حالت شب)                 -->
+    <!-- ============================================ -->
+    <color name="primary">#D18D97</color>
+    <color name="primary_dark">#B76E79</color>
+    <color name="primary_light">#E5A8B0</color>
+    <color name="accent">#E5C79A</color>
+    <color name="accent_light">#F0D9B8</color>
+    <color name="accent_dark">#D4AF7A</color>
+
+    <!-- ============================================ -->
+    <!-- پس‌زمینه‌ها (تیره گرم)                      -->
+    <!-- ============================================ -->
+    <color name="bg_main">#1A1418</color>
+    <color name="bg_secondary">#221A1F</color>
+    <color name="bg_surface">#2A2027</color>
+    <color name="bg_card">#2A2027</color>
+
+    <!-- ============================================ -->
+    <!-- متن                                         -->
+    <!-- ============================================ -->
+    <color name="text_primary">#F5E8ED</color>
+    <color name="text_secondary">#C0A5B0</color>
+    <color name="text_tertiary">#8A7580</color>
+    <color name="text_inverse">#1A1418</color>
+    <color name="text_accent">#D18D97</color>
+
+    <!-- ============================================ -->
+    <!-- خطوط و مرزها                                -->
+    <!-- ============================================ -->
+    <color name="divider">#3A2C33</color>
+    <color name="border">#4A3A42</color>
+
+    <!-- ============================================ -->
+    <!-- حالت‌ها                                       -->
+    <!-- ============================================ -->
+    <color name="success">#8FBFA3</color>
+    <color name="warning">#F0C088</color>
+    <color name="error">#E89A9A</color>
+    <color name="info">#A0B4D9</color>
+
+    <!-- ============================================ -->
+    <!-- اضافات                                      -->
+    <!-- ============================================ -->
+    <color name="transparent">#00000000</color>
+    <color name="scrim">#80000000</color>
+    <color name="ripple">#2FD18D97</color>
+    <color name="shadow">#0D000000</color>
+
+</resources>
