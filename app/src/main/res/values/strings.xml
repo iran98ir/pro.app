@@ -16,6 +16,14 @@
     <string name="splash_privacy">با حفظ کامل حریم خصوصی بانوان</string>
 
     <!-- ============================================ -->
+    <!-- Filter Notice                                -->
+    <!-- ============================================ -->
+    <string name="filter_notice_title">فیلترشکن خود را خاموش کنید</string>
+    <string name="filter_notice_description">دسترسی به این بخش فقط از داخل ایران امکان‌پذیر است. لطفاً پیش از ادامه، فیلترشکن خود را خاموش کنید.</string>
+    <string name="filter_notice_brand">مو✂️مو؛ صادر کننده مو</string>
+    <string name="filter_notice_start">شروع</string>
+
+    <!-- ============================================ -->
     <!-- Onboarding                                   -->
     <!-- ============================================ -->
     <string name="onboarding_skip">پرش</string>
