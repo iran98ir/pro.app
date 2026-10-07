@@ -39,16 +39,19 @@ public class CustomWebViewClient extends WebViewClient {
 
     private boolean handleUrl(String url) {
         Context context = contextRef.get();
-        if (context == null) return false;
+        if (context == null || url == null || url.isEmpty()) return false;
 
-        if (url == null || url.isEmpty()) return false;
+        // ۱. intent:// → استخراج URL اصلی و باز کردن
+        if (url.startsWith("intent:")) {
+            return handleIntentUrl(context, url);
+        }
 
-        // ۱. دامنه‌ی داخلی → داخل WebView
+        // ۲. دامنه‌ی داخلی → داخل WebView
         if (url.contains(BASE_DOMAIN)) {
             return false;
         }
 
-        // ۲. لینک‌های خاص → باز کردن در اپ مناسب
+        // ۳. لینک‌های خاص
         try {
             if (url.startsWith("tel:")
                 || url.startsWith("mailto:")
@@ -56,7 +59,6 @@ public class CustomWebViewClient extends WebViewClient {
                 || url.startsWith("whatsapp:")
                 || url.startsWith("tg:")
                 || url.startsWith("instagram:")
-                || url.startsWith("intent:")
                 || url.startsWith("market:")) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -65,7 +67,7 @@ public class CustomWebViewClient extends WebViewClient {
                 return true;
             }
 
-            // ۳. لینک‌های خارجی (http/https) → مرورگر
+            // ۴. لینک خارجی
             if (url.startsWith("http://") || url.startsWith("https://")) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -78,6 +80,58 @@ public class CustomWebViewClient extends WebViewClient {
         }
 
         return false;
+    }
+
+    /**
+     * مدیریت intent:// URL ها
+     * از فرمت intent://path#Intent;scheme=https;package=...;end
+     * URL اصلی رو استخراج می‌کنه و داخل WebView باز می‌کنه
+     */
+    private boolean handleIntentUrl(Context context, String url) {
+        try {
+            // استخراج بخش اول (بعد از intent://)
+            String workUrl = url.replaceFirst("^intent://", "");
+
+            // پیدا کردن #Intent
+            int intentIndex = workUrl.indexOf("#Intent;");
+            String urlPart = intentIndex > 0
+                ? workUrl.substring(0, intentIndex)
+                : workUrl;
+
+            // استخراج scheme
+            String scheme = "https";
+            if (url.contains("scheme=")) {
+                int schemeStart = url.indexOf("scheme=") + "scheme=".length();
+                int schemeEnd = url.indexOf(";", schemeStart);
+                if (schemeEnd > schemeStart) {
+                    scheme = url.substring(schemeStart, schemeEnd);
+                }
+            }
+
+            // ساخت URL کامل
+            String finalUrl;
+            if (urlPart.startsWith("http://") || urlPart.startsWith("https://")) {
+                finalUrl = urlPart;
+            } else if (urlPart.startsWith("www.") || urlPart.contains(".")) {
+                finalUrl = scheme + "://" + urlPart;
+            } else {
+                finalUrl = scheme + "://" + urlPart;
+            }
+
+            // اگه دامنه‌ی داخلیه، داخل WebView باز کن
+            if (finalUrl.contains(BASE_DOMAIN)) {
+                return false; // WebView خودش باز می‌کنه
+            }
+
+            // وگرنه با مرورگر باز کن
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // ============================================
@@ -93,7 +147,6 @@ public class CustomWebViewClient extends WebViewClient {
             Context context = contextRef.get();
             if (context instanceof MainActivity) {
                 MainActivity activity = (MainActivity) context;
-
                 if (!NetworkUtils.isNetworkAvailable(activity)) {
                     activity.goToOffline();
                 } else {
@@ -111,7 +164,6 @@ public class CustomWebViewClient extends WebViewClient {
 
         if (request.isForMainFrame() && errorResponse != null) {
             int status = errorResponse.getStatusCode();
-
             if (status >= 400) {
                 Context context = contextRef.get();
                 if (context instanceof MainActivity) {
@@ -121,19 +173,14 @@ public class CustomWebViewClient extends WebViewClient {
         }
     }
 
-    // ============================================
-    // مدیریت SSL Errors (رد کردن خطاهای SSL ناامن)
-    // ============================================
     @Override
     public void onReceivedSslError(WebView view,
                                     android.webkit.SslErrorHandler handler,
                                     @NonNull android.net.http.SslError error) {
-        // فقط HTTPS معتبر رو قبول کن — به هیچ وجه proceed نکن
         handler.cancel();
-
         Context context = contextRef.get();
         if (context instanceof MainActivity) {
             ((MainActivity) context).goToError(0);
         }
     }
-}
+                }
