@@ -64,10 +64,10 @@
     <!-- ============================================ -->
     <!-- Exit Dialog                                  -->
     <!-- ============================================ -->
-    <string name="exit_title">از اپ خارج بشم؟</string>
-    <string name="exit_message">اگه خارج بشی، پیام‌های جدید رو از دست می‌دی</string>
-    <string name="exit_yes">بله، خارج شو</string>
-    <string name="exit_no">نه، بمون</string>
+    <string name="exit_title">می‌خوای خارج شی؟</string>
+    <string name="exit_message">حتماً بازم برگرد پیاماتو چک کن</string>
+    <string name="exit_yes">خروج</string>
+    <string name="exit_no">ماندن</string>
     <string name="exit_double_tap">برای خروج، دوباره بزن</string>
 
     <!-- ============================================ -->
