@@ -8,7 +8,6 @@
     android:paddingStart="@dimen/space_xl"
     android:paddingEnd="@dimen/space_xl">
 
-    <!-- آیکون خطا -->
     <ImageView
         android:id="@+id/errorIcon"
         android:layout_width="@dimen/error_icon_size"
@@ -22,7 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.35" />
 
-    <!-- عنوان -->
     <TextView
         android:id="@+id/errorTitle"
         android:layout_width="wrap_content"
@@ -38,7 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- توضیح -->
     <TextView
         android:id="@+id/errorDescription"
         android:layout_width="match_parent"
@@ -46,7 +43,7 @@
         android:layout_marginTop="@dimen/space_md"
         android:text="@string/error_load_failed_desc"
         android:textSize="@dimen/text_body"
-        android:textColor="#2D2D2D"
+        android:textColor="#1A1A1A"
         android:fontFamily="@font/vazirmatn"
         android:gravity="center"
         android:lineSpacingMultiplier="1.6"
@@ -54,7 +51,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- دکمه‌ی تلاش مجدد -->
     <Button
         android:id="@+id/btnRetry"
         style="@style/Btn.Primary"
@@ -68,7 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- لینک تماس با پشتیبانی -->
     <TextView
         android:id="@+id/btnSupport"
         android:layout_width="wrap_content"
@@ -77,7 +72,7 @@
         android:padding="@dimen/space_sm"
         android:text="@string/error_contact_support"
         android:textSize="@dimen/text_small"
-        android:textColor="#B76E79"
+        android:textColor="#1A1A1A"
         android:fontFamily="@font/vazirmatn"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintTop_toBottomOf="@id/btnRetry"
