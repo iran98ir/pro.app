@@ -44,7 +44,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- ==================== گروه نمایش ==================== -->
+        <!-- گروه نمایش -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:text="@string/settings_section_display"
             android:textSize="@dimen/text_small"
             android:textStyle="bold"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
         <LinearLayout
@@ -99,7 +99,7 @@
 
         </LinearLayout>
 
-        <!-- ==================== گروه اعلان‌ها ==================== -->
+        <!-- گروه اعلان‌ها -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
             android:text="@string/settings_section_notifications"
             android:textSize="@dimen/text_small"
             android:textStyle="bold"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
         <LinearLayout
@@ -156,7 +156,7 @@
                         android:layout_marginTop="2dp"
                         android:text="@string/settings_notifications_desc"
                         android:textSize="@dimen/text_caption"
-                        android:textColor="#4A4A4A"
+                        android:textColor="#1A1A1A"
                         android:fontFamily="@font/vazirmatn" />
 
                 </LinearLayout>
@@ -205,7 +205,7 @@
 
         </LinearLayout>
 
-        <!-- ==================== گروه اطلاعات ==================== -->
+        <!-- گروه اطلاعات -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
             android:text="@string/settings_section_about"
             android:textSize="@dimen/text_small"
             android:textStyle="bold"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
         <LinearLayout
@@ -395,7 +395,7 @@
             android:layout_marginBottom="@dimen/space_2xl"
             android:text="@string/app_version_label"
             android:textSize="@dimen/text_caption"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
     </LinearLayout>
