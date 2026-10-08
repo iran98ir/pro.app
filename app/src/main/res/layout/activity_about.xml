@@ -76,7 +76,7 @@
             android:layout_marginTop="@dimen/space_xs"
             android:text="@string/app_version_label"
             android:textSize="@dimen/text_small"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn" />
 
         <!-- توضیح -->
@@ -89,7 +89,7 @@
             android:layout_marginEnd="@dimen/space_2xl"
             android:text="@string/about_description"
             android:textSize="@dimen/text_body"
-            android:textColor="#2D2D2D"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center"
             android:lineSpacingMultiplier="1.7" />
@@ -185,7 +185,7 @@
             android:layout_marginEnd="@dimen/space_2xl"
             android:text="@string/about_copyright"
             android:textSize="@dimen/text_caption"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center" />
 
