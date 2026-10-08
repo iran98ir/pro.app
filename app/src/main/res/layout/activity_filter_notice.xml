@@ -8,7 +8,6 @@
     android:paddingStart="@dimen/space_xl"
     android:paddingEnd="@dimen/space_xl">
 
-    <!-- آیکون سپر -->
     <ImageView
         android:id="@+id/shieldIcon"
         android:layout_width="120dp"
@@ -21,7 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.28" />
 
-    <!-- تیتر -->
     <TextView
         android:id="@+id/noticeTitle"
         android:layout_width="wrap_content"
@@ -37,7 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- توضیح -->
     <TextView
         android:id="@+id/noticeDescription"
         android:layout_width="match_parent"
@@ -45,7 +42,7 @@
         android:layout_marginTop="@dimen/space_lg"
         android:text="@string/filter_notice_description"
         android:textSize="@dimen/text_body"
-        android:textColor="#2D2D2D"
+        android:textColor="#1A1A1A"
         android:fontFamily="@font/vazirmatn"
         android:gravity="center"
         android:lineSpacingMultiplier="1.7"
@@ -53,7 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- برند + آیکون اینفو -->
     <LinearLayout
         android:id="@+id/brandRow"
         android:layout_width="wrap_content"
@@ -77,13 +73,12 @@
             android:layout_marginStart="@dimen/space_sm"
             android:text="@string/filter_notice_brand"
             android:textSize="@dimen/text_small"
-            android:textColor="#4A4A4A"
+            android:textColor="#1A1A1A"
             android:fontFamily="@font/vazirmatn"
             android:gravity="center" />
 
     </LinearLayout>
 
-    <!-- دکمه شروع -->
     <Button
         android:id="@+id/btnStart"
         style="@style/Btn.Primary"
