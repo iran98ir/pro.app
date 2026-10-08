@@ -16,6 +16,24 @@
         <item name="colorSurface">@color/bg_surface</item>
         <item name="android:colorBackground">@color/bg_main</item>
 
+        <!-- ============================================ -->
+        <!-- رنگ‌های متن — صریح و قطعی                    -->
+        <!-- ============================================ -->
+        <item name="android:textColor">#1A1A1A</item>
+        <item name="android:textColorPrimary">#1A1A1A</item>
+        <item name="android:textColorSecondary">#2D2D2D</item>
+        <item name="android:textColorTertiary">#4A4A4A</item>
+        <item name="android:textColorHint">#4A4A4A</item>
+        <item name="android:textColorLink">#B76E79</item>
+        <item name="android:textColorHighlight">#40B76E79</item>
+
+        <!-- Material Components — override متن‌ها -->
+        <item name="colorOnSurface">#1A1A1A</item>
+        <item name="colorOnBackground">#1A1A1A</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorOnSecondary">#1A1A1A</item>
+        <item name="colorOnError">#FFFFFF</item>
+
         <!-- Status Bar & Navigation -->
         <item name="android:statusBarColor">@color/bg_main</item>
         <item name="android:navigationBarColor">@color/bg_main</item>
@@ -25,8 +43,6 @@
         <!-- Typography -->
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="fontFamily">@font/vazirmatn</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:textColorSecondary">@color/text_secondary</item>
 
         <!-- Window Animation -->
         <item name="android:windowAnimationStyle">@style/WindowAnimation</item>
@@ -82,11 +98,11 @@
     </style>
 
     <!-- ============================================ -->
-    <!-- Base Text Style (اگه جایی style="@style/Text" استفاده شد) -->
+    <!-- Base Text Style                              -->
     <!-- ============================================ -->
     <style name="Text" parent="">
         <item name="android:textSize">@dimen/text_body</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:lineSpacingMultiplier">1.6</item>
     </style>
@@ -96,7 +112,7 @@
     <!-- ============================================ -->
     <style name="Text.Display">
         <item name="android:textSize">@dimen/text_display</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
@@ -104,7 +120,7 @@
 
     <style name="Text.H1">
         <item name="android:textSize">@dimen/text_h1</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
@@ -112,7 +128,7 @@
 
     <style name="Text.H2">
         <item name="android:textSize">@dimen/text_h2</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
@@ -120,25 +136,25 @@
 
     <style name="Text.H3">
         <item name="android:textSize">@dimen/text_h3</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Text.Body">
         <item name="android:textSize">@dimen/text_body</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#2D2D2D</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:lineSpacingMultiplier">1.6</item>
     </style>
 
     <style name="Text.Body.Secondary">
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">#4A4A4A</item>
     </style>
 
     <style name="Text.Caption">
         <item name="android:textSize">@dimen/text_caption</item>
-        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:textColor">#4A4A4A</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
     </style>
 
@@ -149,6 +165,9 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
+        <item name="android:textColorPrimary">#1A1A1A</item>
+        <item name="android:textColorSecondary">#2D2D2D</item>
+        <item name="colorOnSurface">#1A1A1A</item>
         <item name="materialAlertDialogTitleTextStyle">@style/Dialog.Title</item>
         <item name="materialAlertDialogBodyTextStyle">@style/Dialog.Body</item>
         <item name="buttonBarPositiveButtonStyle">@style/Dialog.Button.Positive</item>
@@ -156,14 +175,14 @@
     </style>
 
     <style name="Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">#1A1A1A</item>
         <item name="android:textSize">@dimen/text_h3</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
     </style>
 
     <style name="Dialog.Body" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">#2D2D2D</item>
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:fontFamily">@font/vazirmatn</item>
         <item name="android:lineSpacingMultiplier">1.6</item>
@@ -189,7 +208,7 @@
     <style name="Toolbar.App" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/bg_main</item>
         <item name="android:elevation">0dp</item>
-        <item name="titleTextColor">@color/text_primary</item>
+        <item name="titleTextColor">#1A1A1A</item>
         <item name="titleTextAppearance">@style/Text.H3</item>
     </style>
 
