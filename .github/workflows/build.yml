@@ -107,64 +107,51 @@ jobs:
           echo "package=$PKG" >> $GITHUB_OUTPUT
           echo "app_name=$APP_NAME" >> $GITHUB_OUTPUT
 
-      # ===== ۹. دانلود عکس‌ها از پنل =====
-      - name: 🎨 دانلود عکس‌ها از پنل
+      # ===== ۹. دانلود آیکون‌ها از پنل =====
+      - name: 🎨 دانلود آیکون‌ها از پنل
         run: |
           APP="${{ steps.detect.outputs.app_slug }}"
           BASE_URL="https://rosha-24.ir"
-          
-          # ===== دانلود آیکون‌ها =====
+
           ICON_48=$(jq -r '.branding.icon_48 // ""' "configs/$APP.json")
           ICON_72=$(jq -r '.branding.icon_72 // ""' "configs/$APP.json")
           ICON_96=$(jq -r '.branding.icon_96 // ""' "configs/$APP.json")
           ICON_144=$(jq -r '.branding.icon_144 // ""' "configs/$APP.json")
-          SPLASH_LOGO=$(jq -r '.branding.splash_logo // ""' "configs/$APP.json")
-          
+
           echo "📥 دانلود آیکون‌ها..."
-          
-          # ===== حذف آیکون‌های XML قدیمی =====
+
+          # حذف آیکون‌های پیش‌فرض XML
           rm -rf template/app/src/main/res/mipmap-anydpi-v26
-          
-          # ===== ساخت پوشه‌های mipmap =====
+
+          # ساخت پوشه‌ها
           mkdir -p template/app/src/main/res/mipmap-mdpi
           mkdir -p template/app/src/main/res/mipmap-hdpi
           mkdir -p template/app/src/main/res/mipmap-xhdpi
           mkdir -p template/app/src/main/res/mipmap-xxhdpi
-          
-          # ===== دانلود و جایگزینی هر آیکون =====
+
+          # دانلود آیکون‌ها
           if [ -n "$ICON_48" ] && [ "$ICON_48" != "null" ]; then
-            curl -L -o template/app/src/main/res/mipmap-mdpi/ic_launcher.png "$BASE_URL$ICON_48" || echo "⚠️ خطا در دانلود icon_48"
-            curl -L -o template/app/src/main/res/mipmap-mdpi/ic_launcher_round.png "$BASE_URL$ICON_48" || echo "⚠️ خطا"
-            echo "✅ icon_48 دانلود شد"
+            curl -f -L -o template/app/src/main/res/mipmap-mdpi/ic_launcher.png "$BASE_URL$ICON_48" || echo "⚠️ خطا icon_48"
+            echo "✅ icon_48"
           fi
-          
+
           if [ -n "$ICON_72" ] && [ "$ICON_72" != "null" ]; then
-            curl -L -o template/app/src/main/res/mipmap-hdpi/ic_launcher.png "$BASE_URL$ICON_72" || echo "⚠️ خطا در دانلود icon_72"
-            curl -L -o template/app/src/main/res/mipmap-hdpi/ic_launcher_round.png "$BASE_URL$ICON_72" || echo "⚠️ خطا"
-            echo "✅ icon_72 دانلود شد"
+            curl -f -L -o template/app/src/main/res/mipmap-hdpi/ic_launcher.png "$BASE_URL$ICON_72" || echo "⚠️ خطا icon_72"
+            echo "✅ icon_72"
           fi
-          
+
           if [ -n "$ICON_96" ] && [ "$ICON_96" != "null" ]; then
-            curl -L -o template/app/src/main/res/mipmap-xhdpi/ic_launcher.png "$BASE_URL$ICON_96" || echo "⚠️ خطا در دانلود icon_96"
-            curl -L -o template/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png "$BASE_URL$ICON_96" || echo "⚠️ خطا"
-            echo "✅ icon_96 دانلود شد"
+            curl -f -L -o template/app/src/main/res/mipmap-xhdpi/ic_launcher.png "$BASE_URL$ICON_96" || echo "⚠️ خطا icon_96"
+            echo "✅ icon_96"
           fi
-          
+
           if [ -n "$ICON_144" ] && [ "$ICON_144" != "null" ]; then
-            curl -L -o template/app/src/main/res/mipmap-xxhdpi/ic_launcher.png "$BASE_URL$ICON_144" || echo "⚠️ خطا در دانلود icon_144"
-            curl -L -o template/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png "$BASE_URL$ICON_144" || echo "⚠️ خطا"
-            echo "✅ icon_144 دانلود شد"
+            curl -f -L -o template/app/src/main/res/mipmap-xxhdpi/ic_launcher.png "$BASE_URL$ICON_144" || echo "⚠️ خطا icon_144"
+            echo "✅ icon_144"
           fi
-          
-          # ===== دانلود لوگو اسپلش =====
-          mkdir -p template/app/src/main/res/drawable
-          if [ -n "$SPLASH_LOGO" ] && [ "$SPLASH_LOGO" != "null" ]; then
-            curl -L -o template/app/src/main/res/drawable/splash_logo.png "$BASE_URL$SPLASH_LOGO" || echo "⚠️ خطا در دانلود لوگو"
-            echo "✅ لوگو دانلود شد"
-          fi
-          
-          echo "🎨 آیکون‌ها آماده شدن:"
-          find template/app/src/main/res -name "ic_launcher*" -o -name "splash_logo*"
+
+          echo "🎨 لیست آیکون‌ها:"
+          find template/app/src/main/res -name "ic_launcher*" -type f
 
       # ===== ۱۰. Keystore موقت =====
       - name: 🔑 ساخت keystore موقت
